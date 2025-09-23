@@ -26,7 +26,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/notes', notesRoutes);
 app.use('/api/tenant', tenantRoutes);
 
-app.use('*', (req, res) => {
+// Catch-all 404 handler (register without path to avoid path-to-regexp issues)
+app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
