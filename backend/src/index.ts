@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
 import notesRoutes from './routes/notesRoutes';
 import tenantRoutes from './routes/tenantRoutes';
+import inviteRoutes from './routes/inviteRoutes';
 
 // Utils
 import { prisma } from './utils/database';
@@ -25,6 +26,8 @@ app.get('/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', notesRoutes);
 app.use('/api/tenant', tenantRoutes);
+app.use('/tenants', tenantRoutes);
+app.use('/api', inviteRoutes);
 
 // Catch-all 404 handler (register without path to avoid path-to-regexp issues)
 app.use((req, res) => {
