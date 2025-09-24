@@ -30,6 +30,7 @@ const LoginPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,   // ✅ added
   } = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
   });
@@ -49,6 +50,12 @@ const LoginPage = () => {
     }
   };
 
+  // ✅ function to auto-fill demo credentials
+  const handleDemoFill = (email: string, password: string) => {
+    setValue('email', email);
+    setValue('password', password);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-900 dark:to-black relative overflow-hidden">
 
@@ -56,8 +63,6 @@ const LoginPage = () => {
       <div className="absolute top-4 right-8 z-20 bg-transparent">
         <ThemeToggle />
       </div>
-
-    
 
       <div className="flex min-h-screen">
         {/* Left side - Login form */}
@@ -160,12 +165,20 @@ const LoginPage = () => {
 
               {/* Demo accounts */}
               <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                <h3 className="text-xs font-medium text-blue-800 dark:text-blue-300 mb-2">Demo Accounts:</h3>
+                <h3 className="text-xs font-medium text-blue-800 dark:text-blue-300 mb-2">Demo Accounts: (Click to autofill)</h3>
                 <div className="text-xs text-blue-700 dark:text-blue-400 space-y-1">
-                  <p>• admin@acme.test / password123 (Admin)</p>
-                  <p>• user@acme.test / password123 (Member)</p>
-                  <p>• admin@globex.test / password123 (Admin)</p>
-                  <p>• user@globex.test / password123 (Member)</p>
+                  <button type="button" onClick={() => handleDemoFill('admin@acme.test', 'password123')} className="hover:underline">
+                    • admin@acme.test / password123 (Admin)
+                  </button>
+                  <button type="button" onClick={() => handleDemoFill('user@acme.test', 'password123')} className="hover:underline">
+                    • user@acme.test / password123 (Member)
+                  </button>
+                  <button type="button" onClick={() => handleDemoFill('admin@globex.test', 'password123')} className="hover:underline">
+                    • admin@globex.test / password123 (Admin)
+                  </button>
+                  <button type="button" onClick={() => handleDemoFill('user@globex.test', 'password123')} className="hover:underline">
+                    • user@globex.test / password123 (Member)
+                  </button>
                 </div>
               </div>
             </div>
@@ -179,7 +192,6 @@ const LoginPage = () => {
             alt="Login wallpaper"
             className="object-cover w-full h-full"
           />
-         
         </div>
       </div>
     </div>
