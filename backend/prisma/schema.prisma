@@ -16,6 +16,7 @@ model Tenant {
   updatedAt DateTime @updatedAt
   users     User[]
   notes     Note[]
+  invitations Invitation[]
 }
 
 model User {
@@ -28,6 +29,7 @@ model User {
   tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
   tenantId  String
   notes     Note[]
+  invitationsSent Invitation[]
 
   @@index([tenantId])
 }
@@ -45,6 +47,23 @@ model Note {
 
   @@index([tenantId])
   @@index([authorId])
+}
+
+model Invitation {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  tenantId  String
+  createdBy String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  
+  tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  creator   User     @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([token])
 }
 
 enum Plan {
