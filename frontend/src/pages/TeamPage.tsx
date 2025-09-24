@@ -153,9 +153,9 @@ const TeamPage = () => {
         </div>
 
         {/* Team Members */}
-        <div className="bg-white shadow rounded-lg">
+        <div className="bg-white dark:bg-gray-800 shadow rounded-lg">
           <div className="px-4 py-5 sm:p-6">
-            <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">
+            <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white mb-4">
               Team Members
             </h3>
             
@@ -229,48 +229,48 @@ const TeamPage = () => {
 
         {/* Pending Invitations */}
         {invitations.length > 0 && (
-          <div className="bg-white shadow rounded-lg">
+          <div className="bg-white dark:bg-gray-800 shadow rounded-lg">
             <div className="px-4 py-5 sm:p-6">
-              <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">
+              <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white mb-4">
                 Pending Invitations
               </h3>
               
               <div className="overflow-hidden">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                 <thead className="bg-gray-50 dark:bg-gray-700">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-white-500 uppercase tracking-wider">
                         Email
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-white-500 uppercase tracking-wider">
                         Invited By
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-white-500 uppercase tracking-wider">
                         Sent
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-white-500 uppercase tracking-wider">
                         Expires
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                 <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                     {invitations.map((invitation) => (
                       <tr key={invitation.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <Mail className="h-4 w-4 text-gray-400 mr-2" />
-                            <span className="text-sm font-medium text-gray-900">
+                            <Mail className="h-4 w-4 text-white-400 mr-2" />
+                            <span className="text-sm font-medium text-white-900">
                               {invitation.email}
                             </span>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white-900">
                           {invitation.creator.email}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white-500">
                           {new Date(invitation.createdAt).toLocaleDateString()}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white-500">
                           {new Date(invitation.expiresAt).toLocaleDateString()}
                         </td>
                       </tr>

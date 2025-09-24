@@ -56,7 +56,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               />
               <div className="flex flex-col">
                 <h1 className="text-lg font-bold text-gray-900 dark:text-white">
-                  Notes SaaS
+                  Notes App
                 </h1>
                 {user?.tenant.plan === 'PRO' && (
                   <div className="flex items-center">
