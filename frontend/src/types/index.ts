@@ -2,11 +2,15 @@ export interface User {
   id: string;
   email: string;
   role: 'ADMIN' | 'MEMBER';
+  createdAt: string;
   tenant: {
     id: string;
     name: string;
     slug: string;
     plan: 'FREE' | 'PRO';
+  };
+  _count?: {
+    notes: number;
   };
 }
 
