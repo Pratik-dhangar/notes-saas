@@ -6,6 +6,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { authService } from '../services/authService';
+import ThemeToggle from '../components/ui/ThemeToggle';
+import wallpaperImg from '../assets/wallpaper.png';
 import type { LoginForm } from '../types';
 
 const loginSchema = z.object({
@@ -48,97 +50,154 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
-        </div>
-        
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          {error && (
-            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md">
-              {error}
-            </div>
-          )}
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 dark:from-gray-900 dark:via-gray-900 dark:to-black relative overflow-hidden">
+      {/* Theme toggle button */}
+      <div className="absolute top-4 right-4 z-20">
+        <ThemeToggle />
+      </div>
 
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email address
-              </label>
-              <input
-                {...register('email')}
-                type="email"
-                autoComplete="email"
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm"
-                placeholder="Enter your email"
-              />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-              )}
-            </div>
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+      </div>
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <div className="mt-1 relative">
-                <input
-                  {...register('password')}
-                  type={showPassword ? 'text' : 'password'}
-                  autoComplete="current-password"
-                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm pr-10"
-                  placeholder="Enter your password"
+      <div className="flex min-h-screen">
+        {/* Left side - Wallpaper */}
+        <div className="hidden lg:flex lg:w-1/2 relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-purple-600/20 z-10"></div>
+          <img
+            src={wallpaperImg}
+            alt="Login wallpaper"
+            className="object-cover w-full h-full"
+          />
+          <div className="absolute inset-0 z-20 flex items-center justify-center p-12">
+            <div className="text-center text-white">
+              <div className="flex items-center justify-center mb-8">
+                <img 
+                  src="/logo-1.svg" 
+                  alt="Logo" 
+                  className="h-16 w-16 mr-4 filter invert"
                 />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-4 w-4 text-gray-400" />
-                  ) : (
-                    <Eye className="h-4 w-4 text-gray-400" />
-                  )}
-                </button>
+                <h1 className="text-4xl font-bold">Notes SaaS</h1>
               </div>
-              {errors.password && (
-                <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
-              )}
+              <p className="text-xl opacity-90 max-w-md">
+                Your powerful multi-tenant notes platform. Organize, collaborate, and succeed together.
+              </p>
             </div>
           </div>
+        </div>
 
-          <div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLoading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-              Sign in
-            </button>
-          </div>
+        {/* Right side - Login form */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12 relative z-10">
+          <div className="w-full max-w-md space-y-8">
+            {/* Mobile logo */}
+            <div className="lg:hidden text-center mb-8">
+              <div className="flex items-center justify-center mb-4">
+                <img 
+                  src="/logo-1.svg" 
+                  alt="Logo" 
+                  className="h-12 w-12 mr-3"
+                />
+                <h1 className="text-2xl font-bold text-white">Notes SaaS</h1>
+              </div>
+            </div>
 
-          <div className="text-center">
-            <Link
-              to="/register"
-              className="text-primary-600 hover:text-primary-500 text-sm font-medium"
-            >
-              Don't have an account? Sign up
-            </Link>
-          </div>
-        </form>
+            <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20 dark:border-gray-700/50">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  Welcome back
+                </h2>
+                <p className="mt-2 text-gray-600 dark:text-gray-400">
+                  Sign in to your account to continue
+                </p>
+              </div>
+              
+              <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+                {error && (
+                  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-4 py-3 rounded-lg">
+                    {error}
+                  </div>
+                )}
 
-        {/* Demo accounts */}
-        <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-          <h3 className="text-sm font-medium text-blue-800 mb-2">Demo Accounts:</h3>
-          <div className="text-xs text-blue-700 space-y-1">
-            <p>• admin@acme.test / password123 (Admin)</p>
-            <p>• user@acme.test / password123 (Member)</p>
-            <p>• admin@globex.test / password123 (Admin)</p>
-            <p>• user@globex.test / password123 (Member)</p>
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Email address
+                    </label>
+                    <input
+                      {...register('email')}
+                      type="email"
+                      autoComplete="email"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
+                      placeholder="Enter your email"
+                    />
+                    {errors.email && (
+                      <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.email.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Password
+                    </label>
+                    <div className="relative">
+                      <input
+                        {...register('password')}
+                        type={showPassword ? 'text' : 'password'}
+                        autoComplete="current-password"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 pr-12 transition-colors"
+                        placeholder="Enter your password"
+                      />
+                      <button
+                        type="button"
+                        className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? (
+                          <EyeOff className="h-5 w-5" />
+                        ) : (
+                          <Eye className="h-5 w-5" />
+                        )}
+                      </button>
+                    </div>
+                    {errors.password && (
+                      <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.password.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
+                >
+                  {isLoading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+                  Sign in
+                </button>
+
+                <div className="text-center">
+                  <Link
+                    to="/register"
+                    className="text-primary-600 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-300 text-sm font-medium transition-colors"
+                  >
+                    Don't have an account? Sign up
+                  </Link>
+                </div>
+              </form>
+
+              {/* Demo accounts */}
+              <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                <h3 className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-3">Demo Accounts:</h3>
+                <div className="text-xs text-blue-700 dark:text-blue-400 space-y-1">
+                  <p>• admin@acme.test / password123 (Admin)</p>
+                  <p>• user@acme.test / password123 (Member)</p>
+                  <p>• admin@globex.test / password123 (Admin)</p>
+                  <p>• user@globex.test / password123 (Member)</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

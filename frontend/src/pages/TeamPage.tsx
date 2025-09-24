@@ -73,16 +73,16 @@ const TeamPage = () => {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Team Management</h1>
-            <p className="text-gray-600 mt-1">
+            <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">Team Management</h1>
+            <p className="text-gray-600 dark:text-gray-400 mt-2">
               Manage your team members and invitations for {user?.tenant.name}
             </p>
           </div>
           <button
             onClick={() => setShowInviteModal(true)}
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+            className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 transform hover:scale-105"
           >
             <UserPlus className="h-4 w-4 mr-2" />
             Invite Member
@@ -90,12 +90,12 @@ const TeamPage = () => {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white overflow-hidden shadow rounded-lg">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm dark:shadow-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700">
             <div className="p-5">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <Users className="h-6 w-6 text-blue-600" />
+                  <Users className="h-6 w-6 text-primary-600 dark:text-primary-400" />
                 </div>
                 <div className="ml-5 w-0 flex-1">
                   <dl>
