@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://notes-saas-frontend-eight.vercel.app', 'https://your-custom-domain.com']
+    ? ['https://notes-saas-frontend-eight.vercel.app/api', 'https://your-custom-domain.com']
     : ['http://localhost:5173', 'http://localhost:3000'],
   credentials: true
 }));
