@@ -50,7 +50,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 dark:from-gray-900 dark:via-gray-900 dark:to-black relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-900 dark:to-black relative overflow-hidden">
+
       {/* Theme toggle button */}
       <div className="absolute top-4 right-8 z-20 bg-transparent">
         <ThemeToggle />
@@ -60,7 +61,7 @@ const LoginPage = () => {
 
       <div className="flex min-h-screen">
         {/* Left side - Login form */}
-        <div className="w-full lg:w-1/2 flex items-center justify-start p-6 lg:p-12 relative z-10">
+        <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12 relative z-10">
           <div className="w-full max-w-sm space-y-6">
             {/* Mobile logo */}
             <div className="lg:hidden text-center mb-8">
@@ -70,7 +71,7 @@ const LoginPage = () => {
                   alt="Logo" 
                   className="h-12 w-12 mr-3"
                 />
-                <h1 className="text-2xl font-bold text-white">Notes SaaS</h1>
+                <h1 className="text-2xl font-bold text-white">Notes App</h1>
               </div>
             </div>
 
