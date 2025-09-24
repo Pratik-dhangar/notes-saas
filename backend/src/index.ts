@@ -16,7 +16,12 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://your-frontend-domain.vercel.app', 'https://your-custom-domain.com']
+    : ['http://localhost:5173', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 
 app.get('/health', (req, res) => {
@@ -39,14 +44,17 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   res.status(500).json({ message: 'Internal server error' });
 });
 
-app.listen(PORT, async () => {
-  console.log(`Server running on port ${PORT}`);
-  try {
-    await prisma.$connect();
-    console.log('Connected to database');
-  } catch (err) {
-    console.error('Failed to connect to database', err);
-  }
-});
+// Only start server if not in Vercel environment
+if (!process.env.VERCEL) {
+  app.listen(PORT, async () => {
+    console.log(`Server running on port ${PORT}`);
+    try {
+      await prisma.$connect();
+      console.log('Connected to database');
+    } catch (err) {
+      console.error('Failed to connect to database', err);
+    }
+  });
+}
 
 export default app;
