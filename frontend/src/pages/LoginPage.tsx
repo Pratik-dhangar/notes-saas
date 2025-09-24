@@ -64,34 +64,9 @@ const LoginPage = () => {
       </div>
 
       <div className="flex min-h-screen">
-        {/* Left side - Wallpaper */}
-        <div className="hidden lg:flex lg:w-1/2 relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-purple-600/20 z-10"></div>
-          <img
-            src={wallpaperImg}
-            alt="Login wallpaper"
-            className="object-cover w-full h-full"
-          />
-          <div className="absolute inset-0 z-20 flex items-center justify-center p-12">
-            <div className="text-center text-white">
-              <div className="flex items-center justify-center mb-8">
-                <img 
-                  src="/logo-1.svg" 
-                  alt="Logo" 
-                  className="h-16 w-16 mr-4 filter invert"
-                />
-                <h1 className="text-4xl font-bold">Notes SaaS</h1>
-              </div>
-              <p className="text-xl opacity-90 max-w-md">
-                Your powerful multi-tenant notes platform. Organize, collaborate, and succeed together.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Right side - Login form */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12 relative z-10">
-          <div className="w-full max-w-md space-y-8">
+        {/* Left side - Login form */}
+        <div className="w-full lg:w-1/2 flex items-center justify-start p-6 lg:p-12 relative z-10">
+          <div className="w-full max-w-sm space-y-6">
             {/* Mobile logo */}
             <div className="lg:hidden text-center mb-8">
               <div className="flex items-center justify-center mb-4">
@@ -104,17 +79,17 @@ const LoginPage = () => {
               </div>
             </div>
 
-            <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20 dark:border-gray-700/50">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
+              <div className="text-center mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Welcome back
                 </h2>
-                <p className="mt-2 text-gray-600 dark:text-gray-400">
+                <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm">
                   Sign in to your account to continue
                 </p>
               </div>
               
-              <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+              <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 {error && (
                   <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-4 py-3 rounded-lg">
                     {error}
@@ -130,7 +105,7 @@ const LoginPage = () => {
                       {...register('email')}
                       type="email"
                       autoComplete="email"
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors text-sm"
                       placeholder="Enter your email"
                     />
                     {errors.email && (
@@ -147,7 +122,7 @@ const LoginPage = () => {
                         {...register('password')}
                         type={showPassword ? 'text' : 'password'}
                         autoComplete="current-password"
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 pr-12 transition-colors"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 pr-10 transition-colors text-sm"
                         placeholder="Enter your password"
                       />
                       <button
@@ -171,7 +146,7 @@ const LoginPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
+                  className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                 >
                   {isLoading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                   Sign in
@@ -188,8 +163,8 @@ const LoginPage = () => {
               </form>
 
               {/* Demo accounts */}
-              <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                <h3 className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-3">Demo Accounts:</h3>
+              <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                <h3 className="text-xs font-medium text-blue-800 dark:text-blue-300 mb-2">Demo Accounts:</h3>
                 <div className="text-xs text-blue-700 dark:text-blue-400 space-y-1">
                   <p>• admin@acme.test / password123 (Admin)</p>
                   <p>• user@acme.test / password123 (Member)</p>
@@ -197,6 +172,30 @@ const LoginPage = () => {
                   <p>• user@globex.test / password123 (Member)</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right side - Wallpaper with smaller logo */}
+        <div className="hidden lg:flex lg:w-1/2 relative">
+          <img
+            src={wallpaperImg}
+            alt="Login wallpaper"
+            className="object-cover w-full h-full"
+          />
+          <div className="absolute inset-0 flex items-center justify-center p-12">
+            <div className="text-center text-white">
+              <div className="flex items-center justify-center mb-6">
+                <img 
+                  src="/logo-1.svg" 
+                  alt="Logo" 
+                  className="h-12 w-12 mr-3 filter invert"
+                />
+                <h1 className="text-3xl font-bold">Notes SaaS</h1>
+              </div>
+              <p className="text-lg opacity-90 max-w-sm">
+                Your powerful multi-tenant notes platform. Organize, collaborate, and succeed together.
+              </p>
             </div>
           </div>
         </div>
