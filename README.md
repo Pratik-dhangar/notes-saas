@@ -1,11 +1,8 @@
-# Notes SaaS ## 🚀 [Live Demo](https://notes-saas-frontend-eight.vercel.app/)
+# Notes SaaS  🚀 [Live Demo](https://notes-saas-frontend-eight.vercel.app/)
 
 > **Multi-tenant SaaS platform for collaborative note-taking with enterprise-grade security and role-based access control.**
 
-## 🚀 [Live Demo](https://notes-saas-frontend-eight.vercel.app/)
-
-## 📡 API Documentation
-
+## 📡Documentation
 **API DOC** - https://documenter.getpostman.com/view/37009033/2sB3QCRskU
 
 ## ⚡ Key Features
