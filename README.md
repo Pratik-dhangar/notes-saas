@@ -1,12 +1,11 @@
-# Notes SaaS
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Pratik-dhangar/notes-saas)
+# Notes SaaS  🚀 [Live Demo](https://notes-saas-frontend-eight.vercel.app/)
 
 > **Multi-tenant SaaS platform for collaborative note-taking with enterprise-grade security and role-based access control.**
 
-## 🚀 [Live Demo](https://notes-saas-frontend-eight.vercel.app/)
-
-## 📡 API Documentation
-
-**API DOC** - https://documenter.getpostman.com/view/37009033/2sB3QCRskU
+## 📡Documentation
+- **API DOC** - https://documenter.getpostman.com/view/37009033/2sB3QCRskU
+- **REPO DOC** - https://deepwiki.com/Pratik-dhangar/notes-saas
 
 ## ⚡ Key Features
 
@@ -18,23 +17,60 @@
 - **📱 Responsive Design** - Works seamlessly across all devices
 - **🌙 Dark Mode Support** - Beautiful UI that adapts to user preferences
 
-## 🛠️ Tech Stack
+## 💻 Implementation Overview
 
+### 1. **Frontend (React) + Backend (Node.js) Architecture**
 **Frontend**
 - React 19 + TypeScript + Vite
 - Tailwind CSS + Lucide Icons
 - React Hook Form + Zod validation
 - Axios + TanStack Query
-
 **Backend**
 - Node.js + Express + TypeScript
 - PostgreSQL + Prisma ORM
 - JWT + bcryptjs
 - Multi-tenant data architecture
-
 **Deployment**
 - Vercel (Frontend & Backend)
 - Neon PostgreSQL Database
+
+### 2. **Functional Authentication System**
+// Security features implemented:
+✅ bcrypt password hashing (10 rounds)
+✅ JWT tokens with 24h expiration
+✅ Automatic token refresh handling
+✅ Protected route middleware
+✅ Role-based access control (Admin/Member)
+
+### 3. **Dashboard with CRUD Operations**
+**Primary Entity: Notes Management**
+- **Create**: Rich text editor with title/content validation
+- **Read**: Paginated notes list with search and filtering
+- **Update**: Inline editing with optimistic updates
+- **Delete**: Soft delete with confirmation dialogs
+**Secondary CRUD: Team Management (Admin only)**
+- User invitation system with email tokens
+- Member role management and statistics
+- Tenant subscription plan upgrades
+
+### 5. **Production Scaling Strategy**  
+**Current Architecture (Suitable for 1-10K users):**
+
+**Phase 1: Performance Optimization (10K-100K users)**
+// Implementation strategies:
+- API Response Caching (Redis)
+- Database Query Optimization (Indexes, Connection Pooling)
+- CDN Integration (Static Assets, API Caching)
+- Rate Limiting & Request Throttling
+**Phase 2: Microservices Architecture (100K+ users)**
+- Frontend → API Gateway → [Auth Service, Notes Service, Tenant Service] → Database Cluster
+**Phase 3: Advanced Scaling (Enterprise)**
+// Advanced scaling implementations:
+- Horizontal Database Sharding by tenant_id
+- Event-driven architecture with message queues
+- Container orchestration (Docker + Kubernetes)
+- Multi-region deployment with data replication
+- Real-time features with WebSocket clusters
 
 ## 🏗️ Architecture Highlights
 
@@ -135,14 +171,6 @@ Both frontend and backend are deployed on **Vercel** with:
 - Environment variable management
 - Serverless functions for backend
 - Global CDN for frontend assets
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open Pull Request
 
 ## 📄 License
 
