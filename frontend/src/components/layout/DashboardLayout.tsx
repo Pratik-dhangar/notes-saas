@@ -3,8 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { 
   LogOut, 
-  Menu, 
-  X, 
+  Menu,  
   FileText, 
   Users, 
   Settings,
