@@ -4,7 +4,8 @@
 > **Multi-tenant SaaS platform for collaborative note-taking with enterprise-grade security and role-based access control.**
 
 ## 📡Documentation
-**API DOC** - https://documenter.getpostman.com/view/37009033/2sB3QCRskU
+- **API DOC** - https://documenter.getpostman.com/view/37009033/2sB3QCRskU
+- **REPO DOC** - https://deepwiki.com/Pratik-dhangar/notes-saas
 
 ## ⚡ Key Features
 
