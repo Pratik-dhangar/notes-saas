@@ -76,7 +76,7 @@ const LoginPage = () => {
                   alt="Logo" 
                   className="h-12 w-12 mr-3"
                 />
-                <h1 className="text-2xl font-bold text-white">Notes App</h1>
+                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Notes App</h1>
               </div>
             </div>
 
