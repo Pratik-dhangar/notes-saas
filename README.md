@@ -15,8 +15,8 @@
 - **📝 Rich Notes Management** - Create, edit, and organize notes with markdown support
 - **🔐 Enterprise Security** - JWT authentication with bcrypt password hashing
 - **💼 Subscription Plans** - FREE (3 notes) and PRO (unlimited) tiers
-- **🌙 Dark Mode Support** - Beautiful UI that adapts to user preferences
 - **📱 Responsive Design** - Works seamlessly across all devices
+- **🌙 Dark Mode Support** - Beautiful UI that adapts to user preferences
 
 ## 🛠️ Tech Stack
 
